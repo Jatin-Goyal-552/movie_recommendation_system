@@ -7,7 +7,7 @@
  <p align="center">
   <img src="Final_output/c.png" width="1000" >
 </p>
- <h3>It will recommend you all movies similar to given movie by user and also details about recommended movies.</h3>
+ <h3>It will recommend you top-20 movies similar to movie given by user and also details about recommended movies.</h3>
   <p align="center">
   <img src="Final_output/d.png" width="1000" >
 </p>
