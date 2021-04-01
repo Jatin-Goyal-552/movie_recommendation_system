@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>movies</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Use an element to toggle between a like/dislike icon -->
+  <!-- Custom fonts for this template -->
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/clean-blog.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+    form.example input[type=text] {
+      padding: 10px;
+      font-size: 17px;
+      border: 1px solid grey;
+      float: left;
+      margin-left: 10%;
+      width: 60%;
+      background: #f1f1f1;
+    }
+    
+    form.example button {
+      float: left;
+      width: 20%;
+      padding: 10px;
+      background: #2196F3;
+      color: white;
+      font-size: 17px;
+      border: 1px solid grey;
+      border-left: none;
+      cursor: pointer;
+    }
+    
+    form.example button:hover {
+      background: #0b7dda;
+    }
+    
+    form.example::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+    
+<body>
+
+  <!-- Navigation -->
+ 
+  <br>
+  <form method="POST" class="example" action="" >
+      {% csrf_token %}
+    <input type="text" placeholder="Enter correct movie name (e.g Avatar, The Dark Knight Rises...)" name="movie_name">
+    <button type="submit"><i class="fa fa-search"></i></button>
+  </form>
+  <br>
+  {% if recommen %}
+  <h2>Similar movies are :-</h2>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Genre</th>
+      <th>Tagline</th>
+      <th>Cast</th>
+      <th>Director</th>
+      <th>Language</th>
+    </tr>
+{% endif %}
+  {% for recom in recommen %}
+<tr>
+    <td>{{ recom.0}}</td>
+    <td>{{ recom.1}}</td>
+    <td>{{ recom.2}}</td>
+    <td>{{ recom.3}}</td>
+    <td>{{ recom.4}}</td>
+<td>{{ recom.5}}</td>
+  </tr>
+{% endfor %}
+</table>
+<br>
+<br>
+  <!-- Bootstrap core JavaScript -->
+  
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="{% static 'js/clean-blog.min.js' %}"></script>
+
+</body>
+
+</html>
